@@ -1,0 +1,12 @@
+---
+import Photo from './Photo.astro';
+import Authors from './Authors.astro';
+import { href } from '../lib/site';
+const { paper } = Astro.props;
+const p = paper.data;
+const target = href(p.project || `papers/${paper.id}/`);
+---
+<article class="paper" data-paper data-search={`${p.title} ${p.authors.join(' ')} ${p.summary} ${p.topics.join(' ')}`.toLowerCase()} data-topics={JSON.stringify(p.topics)} data-year={p.year} data-order={p.order}>
+  <a class="paper-image" href={target} tabindex="-1" aria-hidden="true"><Photo name={p.image} alt="" sizes="(max-width: 600px) 140px, 190px"/></a>
+  <div class="paper-content"><p class="paper-venue">{p.venue} {p.year}{p.oral && <span class="oral">Oral</span>}</p><h3><a href={target}>{p.title}</a></h3><Authors authors={p.authors}/><p class="paper-summary">{p.summary}</p><div class="paper-links"><a href={href(`papers/${paper.id}/`)}>Overview</a>{p.project && <a href={target}>Project ↗</a>}<a href={href(p.pdf)}>Paper ↗</a><a href={href(p.bib)} data-cite={href(p.bib)}>Cite</a></div></div>
+</article>

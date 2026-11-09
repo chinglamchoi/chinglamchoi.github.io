@@ -1,0 +1,21 @@
+{
+  "name": "ching-lam-choi-personal-site",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "astro dev --host 127.0.0.1",
+    "build": "astro build",
+    "preview": "astro preview --host 127.0.0.1",
+    "check:links": "node scripts/check-links.mjs",
+    "media": "python3 scripts/optimize-media.py",
+    "new:post": "node scripts/new-content.mjs post",
+    "new:paper": "node scripts/new-content.mjs paper"
+  },
+  "dependencies": {
+    "astro": "6.4.8"
+  }
+}

@@ -1,0 +1,8 @@
+---
+import media from '../data/media.json';
+import { href } from '../lib/site';
+const { name, alt, eager = false, sizes = '(max-width: 700px) 90vw, 480px', class: className = '', ...rest } = Astro.props;
+const data = media[name as keyof typeof media];
+const widths = data.widths;
+---
+<img class={className} src={href(`media/${name}-${widths[0]}.webp`)} srcset={widths.map(w => `${href(`media/${name}-${w}.webp`)} ${w}w`).join(', ')} sizes={sizes} width={data.width} height={data.height} alt={alt} loading={eager ? 'eager' : 'lazy'} fetchpriority={eager ? 'high' : 'auto'} decoding="async" {...rest}/>

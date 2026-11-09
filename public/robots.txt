@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://chinglamchoi.github.io/sitemap.xml

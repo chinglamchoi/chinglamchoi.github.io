@@ -1,0 +1,6 @@
+---
+import people from '../data/people.json';
+import { href } from '../lib/site';
+const { authors } = Astro.props;
+---
+<p class="authors">{authors.map((name: string, i: number) => <>{i > 0 && ', '}{name === 'Ching Lam Choi' ? <strong>{name}</strong> : people[name as keyof typeof people] ? <a href={people[name as keyof typeof people]}>{name}</a> : name}</>)}</p>

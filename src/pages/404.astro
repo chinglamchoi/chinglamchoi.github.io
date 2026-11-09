@@ -1,0 +1,5 @@
+---
+import Base from '../layouts/Base.astro';
+import {href} from '../lib/site';
+---
+<Base title="Page not found"><section class="page-heading"><p class="eyebrow">404</p><h1>This page wandered off.</h1><p>The link may have changed. You can head home or look through the research archive.</p><div class="paper-page-links"><a class="button primary" href={href()}>Back home</a><a href={href('research/')}>Browse research →</a></div></section></Base>

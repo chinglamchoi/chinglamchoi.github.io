@@ -1,0 +1,180 @@
+{
+  "interpML": {
+    "width": 1288,
+    "height": 1012,
+    "widths": [
+      320,
+      640,
+      1280
+    ]
+  },
+  "UNI": {
+    "width": 1432,
+    "height": 540,
+    "widths": [
+      320,
+      640,
+      1280
+    ]
+  },
+  "goethe": {
+    "width": 3468,
+    "height": 2632,
+    "widths": [
+      480,
+      960
+    ]
+  },
+  "uad": {
+    "width": 830,
+    "height": 178,
+    "widths": [
+      320,
+      640,
+      1280
+    ]
+  },
+  "schorle": {
+    "width": 3468,
+    "height": 2542,
+    "widths": [
+      480,
+      960
+    ]
+  },
+  "hilaryHahn": {
+    "width": 2560,
+    "height": 4035,
+    "widths": [
+      480,
+      960
+    ]
+  },
+  "FARO": {
+    "width": 2796,
+    "height": 1761,
+    "widths": [
+      320,
+      640,
+      1280
+    ]
+  },
+  "tabular-pancakes": {
+    "width": 2047,
+    "height": 757,
+    "widths": [
+      320,
+      640,
+      1280
+    ]
+  },
+  "talks": {
+    "width": 1377,
+    "height": 1318,
+    "widths": [
+      320,
+      640,
+      1280
+    ]
+  },
+  "naudits": {
+    "width": 4280,
+    "height": 1989,
+    "widths": [
+      320,
+      640,
+      1280
+    ]
+  },
+  "chinglamchoi": {
+    "width": 1370,
+    "height": 1486,
+    "widths": [
+      480,
+      960
+    ]
+  },
+  "schoenblick": {
+    "width": 4554,
+    "height": 3415,
+    "widths": [
+      480,
+      960
+    ]
+  },
+  "bake": {
+    "width": 848,
+    "height": 693,
+    "widths": [
+      320,
+      640,
+      1280
+    ]
+  },
+  "misc": {
+    "width": 1066,
+    "height": 1378,
+    "widths": [
+      320,
+      640,
+      1280
+    ]
+  },
+  "divco": {
+    "width": 1452,
+    "height": 1140,
+    "widths": [
+      320,
+      640,
+      1280
+    ]
+  },
+  "neckar-flowers": {
+    "width": 1536,
+    "height": 2048,
+    "widths": [
+      480,
+      960
+    ]
+  },
+  "neckar-wide": {
+    "width": 2048,
+    "height": 1536,
+    "widths": [
+      480,
+      960
+    ]
+  },
+  "bouldering": {
+    "width": 1200,
+    "height": 1600,
+    "widths": [
+      480,
+      960
+    ]
+  },
+  "reading-wall": {
+    "width": 1200,
+    "height": 1600,
+    "widths": [
+      480,
+      960
+    ]
+  },
+  "painted-vessels": {
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      480,
+      960
+    ]
+  },
+  "sculpture-study": {
+    "width": 1200,
+    "height": 1600,
+    "widths": [
+      480,
+      960
+    ]
+  }
+}

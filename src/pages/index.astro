@@ -1,0 +1,25 @@
+---
+import Base from '../layouts/Base.astro';
+import { Content as HomeIntro } from '../content/home.md';
+import { Content as ResearchIntro } from '../content/research.md';
+import { Content as Background } from '../content/background.md';
+import Photo from '../components/Photo.astro';
+import PaperCard from '../components/PaperCard.astro';
+import Icon from '../components/Icon.astro';
+import site from '../data/site.json';
+import news from '../data/news.json';
+import { getCollection } from 'astro:content';
+import { href, formatDate } from '../lib/site';
+const papers = (await getCollection('papers',({data})=>!data.draft && data.featured)).sort((a,b)=>a.data.order-b.data.order);
+const latest = news.filter(n=>n.date).sort((a,b)=>b.date.localeCompare(a.date)).slice(0,3);
+const topics = [{name:'Synthetic data',color:'cyan',text:'What makes data useful for learning?'},{name:'Trustworthy AI',color:'rose',text:'Cryptography, robustness, and fairness.'},{name:'Interpretability',color:'violet',text:'Understanding what a model has learned.'},{name:'Representation learning',color:'blue',text:'Structure shared across tasks and modalities.'}];
+---
+<Base active="home">
+  <section class="intro"><div class="intro-copy"><p class="eyebrow">Hello, I’m</p><h1>{site.name}<span class="name-period">.</span></h1><p class="intro-role">PhD student in EECS at <a href="https://www.csail.mit.edu/">MIT CSAIL</a>.</p><HomeIntro/><div class="intro-links"><a href={`mailto:${site.email}`}>Email <Icon name="external" size={13}/></a><a href={site.socials[0].url}>Scholar <Icon name="external" size={13}/></a><a href={href('docs/ChingLamCHOI_cv.pdf')}>CV <Icon name="external" size={13}/></a><button class="text-button js-only" data-copy-email={site.email}>Copy email</button></div><span class="small" id="email-status" role="status"></span></div><figure class="portrait"><Photo name="chinglamchoi" alt="Ching Lam Choi outdoors" eager sizes="(max-width: 600px) 160px, 250px"/></figure></section>
+  <section class="biography" aria-label="Background"><Background/></section>
+  <section class="home-section"><div class="section-heading"><h2>Research</h2><a href={href('research/')}>All research <Icon name="arrow" size={16}/></a></div><div class="research-intro"><ResearchIntro/></div><div class="directions">{topics.map(t=><a class={`direction ${t.color}`} href={href(`research/?topic=${encodeURIComponent(t.name)}`)}><span class="direction-dot"></span><div><h3>{t.name}</h3><p>{t.text}</p></div><Icon name="arrow" size={17}/></a>)}</div></section>
+  <section class="home-section"><div class="section-heading"><h2>Recently</h2><a href={href('news/')}>News & talks <Icon name="arrow" size={16}/></a></div><div class="recent-list">{latest.map(n=><article><time datetime={n.date}>{n.displayDate || formatDate(n.date)}</time><span class={`news-category ${n.category==='Talks'?'blue':'violet'}`}>{n.category}</span><p set:html={n.html.replace(/^\s*\[.*?\]\s*/, '')}/></article>)}</div></section>
+  <section class="home-section"><div class="section-heading"><h2>Selected work</h2><a href={href('research/')}>All papers <Icon name="arrow" size={16}/></a></div><div class="paper-list">{papers.map(paper=><PaperCard paper={paper}/>)}</div></section>
+  <section class="home-section"><div class="section-heading"><h2>Outside the lab</h2><a href={href('about/')}>A little more about me <Icon name="arrow" size={16}/></a></div><div class="personal-grid"><a href={href('about/#outdoors')}><Photo name="neckar-wide" alt="The Neckar and Hölderlinturm in Tübingen" sizes="(max-width: 600px) 90vw, 300px"/><h3>Outdoors <span>↗</span></h3><p>Climbing, hiking, and a view worth stopping for.</p></a><a href={href('about/#music')}><Photo name="hilaryHahn" alt="Ching Lam with Hilary Hahn after a concert" sizes="(max-width: 600px) 90vw, 300px"/><h3>Music <span>↗</span></h3><p>A soft spot for strings, winds, and voices.</p></a><a href={href('about/#reading')}><Photo name="reading-wall" alt="A visit to the Deutsches Romantik-Museum" sizes="(max-width: 600px) 90vw, 300px"/><h3>Reading <span>↗</span></h3><p>The books I carry around, and return to.</p></a></div></section>
+  <section class="coffee-invitation"><Icon name="coffee" size={32}/><div><h2>Let’s talk.</h2><p>Research questions, shared interests, or a conversation over coffee.</p></div><a href={href('coffee/')}>Coffee hours <Icon name="arrow" size={18}/></a></section>
+</Base>

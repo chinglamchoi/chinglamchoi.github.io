@@ -1,0 +1,8 @@
+---
+import { href } from '../lib/site';
+const { title, poster, video, audio, youtubeId } = Astro.props;
+---
+<figure class="media-block">
+  {youtubeId ? <div class="media-facade"><button type="button" data-youtube={youtubeId} aria-label={`Load and play ${title}`}><img src={href(poster)} alt="" loading="lazy" decoding="async" width="1280" height="720"/><span>▶ Play video</span></button></div> : video ? <video controls preload="none" poster={poster ? href(poster) : undefined} width="1280" height="720"><source src={href(video)}/><a href={href(video)}>Download video</a></video> : audio ? <audio controls preload="none" src={href(audio)}><a href={href(audio)}>Download audio</a></audio> : null}
+  <figcaption>{title}</figcaption>
+</figure>

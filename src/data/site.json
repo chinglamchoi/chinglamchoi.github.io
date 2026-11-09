@@ -1,0 +1,30 @@
+{
+  "name": "Ching Lam CHOI",
+  "role": "PhD student \u00b7 MIT CSAIL",
+  "email": "chinglam@mit.edu",
+  "description": "Structure, safety, and multimodal learning. Research, writing, and a few things outside the lab.",
+  "bookingUrl": "",
+  "coffeeStatus": "Calendar coming soon",
+  "socials": [
+    {
+      "label": "Google Scholar",
+      "url": "https://scholar.google.com/citations?user=1uIAXh0AAAAJ"
+    },
+    {
+      "label": "GitHub",
+      "url": "https://github.com/chinglamchoi"
+    },
+    {
+      "label": "LinkedIn",
+      "url": "https://www.linkedin.com/in/ching-lam-choi/"
+    },
+    {
+      "label": "X / Twitter",
+      "url": "https://twitter.com/cchoi314"
+    },
+    {
+      "label": "Goodreads",
+      "url": "https://www.goodreads.com/user/show/43843562-ching-lam"
+    }
+  ]
+}

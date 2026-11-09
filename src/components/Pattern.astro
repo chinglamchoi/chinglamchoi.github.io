@@ -1,0 +1,5 @@
+---
+import { href } from '../lib/site';
+const { name='waves', class: className='' }=Astro.props;
+---
+<img class={`pattern ${className}`} src={href(`patterns/${name}.svg`)} alt="" aria-hidden="true" width="800" height="240" loading="lazy" decoding="async"/>

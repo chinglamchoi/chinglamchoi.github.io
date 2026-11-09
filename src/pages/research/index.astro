@@ -1,0 +1,12 @@
+---
+import Base from '../../layouts/Base.astro';
+import PaperCard from '../../components/PaperCard.astro';
+import Icon from '../../components/Icon.astro';
+import { getCollection } from 'astro:content';
+import site from '../../data/site.json';
+const papers=(await getCollection('papers',({data})=>!data.draft)).sort((a,b)=>a.data.order-b.data.order);
+const topics=[...new Set(papers.flatMap(p=>p.data.topics))];
+const years=[...new Set(papers.map(p=>p.data.year))].sort((a,b)=>b-a);
+---
+<Base title="Research" active="research"><header class="page-heading"><p class="eyebrow">Papers & projects</p><h1>Research</h1><p>Structure in data and models. Safety, robustness, and the representations that make learning work.</p><a class="text-link" href={site.socials[0].url}>Google Scholar ↗</a></header>
+<section data-paper-browser><div class="filter-toolbar js-only"><label class="search-field"><Icon name="search" size={18}/><span class="sr-only">Search publications</span><input type="search" id="paper-search" placeholder="Search titles, authors, topics…"/></label><label class="sort-label"><span class="sr-only">Publication year</span><select id="paper-year"><option value="all">All years</option>{years.map(y=><option value={y}>{y}</option>)}</select></label><div class="view-buttons" role="group" aria-label="Publication layout"><button class="icon-button active" data-view="list" aria-label="List view" aria-pressed="true"><Icon name="list" size={18}/></button><button class="icon-button" data-view="grid" aria-label="Gallery view" aria-pressed="false"><Icon name="grid" size={18}/></button></div></div><div class="topic-filters js-only" role="group" aria-label="Filter by research topic"><button data-topic="all" aria-pressed="true">All topics</button>{topics.map(t=><button data-topic={t} aria-pressed="false">{t}</button>)}</div><p class="result-count js-only" id="paper-count" role="status">{papers.length} papers</p><div class="paper-list" id="paper-results">{papers.map(paper=><PaperCard paper={paper}/>)}</div><div class="empty-state" id="paper-empty" hidden><h2>No matching papers</h2><p>Try a broader term, a different year, or clear the filters.</p><button class="button" id="clear-paper-filters">Clear filters</button></div></section><script>import '../../scripts/research';</script></Base>

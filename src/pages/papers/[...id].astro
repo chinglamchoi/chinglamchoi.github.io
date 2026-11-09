@@ -1,0 +1,12 @@
+---
+import Base from '../../layouts/Base.astro';
+import Authors from '../../components/Authors.astro';
+import Photo from '../../components/Photo.astro';
+import PaperCard from '../../components/PaperCard.astro';
+import { getCollection, render } from 'astro:content';
+import { href } from '../../lib/site';
+export async function getStaticPaths(){return (await getCollection('papers',({data})=>!data.draft)).map(paper=>({params:{id:paper.id},props:{paper}}));}
+const {paper}=Astro.props;const p=paper.data;const {Content}=await render(paper);
+const related=(await getCollection('papers',({data})=>!data.draft)).filter(other=>other.id!==paper.id && other.data.topics.some(t=>p.topics.includes(t))).slice(0,2);
+---
+<Base title={p.title} description={p.summary} active="research"><a class="back-link" href={href('research/')}>← Research</a><header class="paper-heading"><p class="paper-venue">{p.venue} {p.year}{p.oral&&<span class="oral">Oral</span>}</p><h1>{p.title}</h1><Authors authors={p.authors}/><div class="paper-page-links"><a class="button primary" href={href(p.pdf)}>Read paper ↗</a>{p.project&&<a class="button" href={href(p.project)}>Interactive project page ↗</a>}<a href={href(p.bib)} data-cite={href(p.bib)}>BibTeX</a></div><ul class="inline-topics">{p.topics.map(t=><li><a href={href(`research/?topic=${encodeURIComponent(t)}`)}>{t}</a></li>)}</ul></header><figure class="paper-hero-figure"><Photo name={p.image} alt={`Overview figure for ${p.title}`} eager sizes="(max-width: 700px) 90vw, 850px"/></figure><article class="prose"><Content/></article>{related.length>0&&<section class="home-section"><h2>Related work</h2>{related.map(paper=><PaperCard paper={paper}/>)}</section>}</Base>
